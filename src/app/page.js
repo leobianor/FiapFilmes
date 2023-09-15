@@ -6,11 +6,13 @@ export default function Home() {
   //mock
   const filmes = [
     {
+      id:1,
       titulo: "Star Wars: Episódio II - Ataque dos Clones",
       nota: 10,
       poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9m1nJ2MfTG5QEmjOCg0b4YCo4W8.jpg"
     },
     {
+      id:2,
       titulo: "Toy Story: Um Mundo de Aventuras ",
       nota: 10,
       poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6AafgfifXkFS4g2xGJZIwsPQK6P.jpg"
@@ -41,8 +43,6 @@ export default function Home() {
 
 
       <Titulo>Lançamentos</Titulo>
-
-
     </>
   )
 }
