@@ -1,24 +1,18 @@
 import Titulo from "@/components/Titulo";
 import CardFilme from "@/components/cardFilme";
 
+async function carregarDados() {
+  const url = "https://api.themoviedb.org/3/trending/movie/week?api_key=1e922667481ab207d642450b0efb461e&language=pt-br"
+  const response = await fetch(url)
+  const json = await response.json()
+  return json.results
+}
 
-export default function Home() {
+
+export default async function Home() {
   //mock
-  const filmes = [
-    {
-      id:1,
-      titulo: "Star Wars: Episódio II - Ataque dos Clones",
-      nota: 10,
-      poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9m1nJ2MfTG5QEmjOCg0b4YCo4W8.jpg"
-    },
-    {
-      id:2,
-      titulo: "Toy Story: Um Mundo de Aventuras ",
-      nota: 10,
-      poster: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6AafgfifXkFS4g2xGJZIwsPQK6P.jpg"
-    }
 
-  ]
+  const filmes = await carregarDados()
 
 
   return (
@@ -30,7 +24,7 @@ export default function Home() {
 
         <ul>
           <li>
-            <a className='mx-8' href="#">Favoritos</a>
+            <a className='mx-8' href="/favoritos">Favoritos</a>
             <a className='mx-8' href="#">Lançamentos</a>
           </li>
         </ul>
@@ -38,7 +32,7 @@ export default function Home() {
       <Titulo>Em Alta</Titulo>
 
       <section className="flex gap-2 flex-wrap">
-        {filmes.map( filme => <CardFilme filme={filme}/>)}
+        {filmes.map(filme => <CardFilme filme={filme} />)}
       </section>
 
 
